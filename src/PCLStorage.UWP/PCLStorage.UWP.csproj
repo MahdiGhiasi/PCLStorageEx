@@ -137,6 +137,9 @@
     <Compile Include="..\PCLStorage.WinRT\WinRTFolder.cs">
       <Link>WinRTFolder.cs</Link>
     </Compile>
+	<Compile Include="..\PCLStorage.FileSystem.Desktop\FileSystemFileStats.cs">
+		<Link>FileSystemFileStats.cs</Link>
+    </Compile>
     <EmbeddedResource Include="Properties\PCLStorage.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>

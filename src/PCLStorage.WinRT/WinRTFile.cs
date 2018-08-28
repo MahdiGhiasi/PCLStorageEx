@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.Storage.FileProperties;
 
 namespace PCLStorage
 {
@@ -141,6 +142,38 @@ namespace PCLStorage
 
                 throw;
             }
+        }
+
+        public async Task<IFileStats> GetFileStats(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            BasicProperties val = await _wrappedFile.GetBasicPropertiesAsync();
+            return new FileSystemFileStats
+            {
+                Name = _wrappedFile.Name,
+                Extension = System.IO.Path.GetExtension(_wrappedFile.Name),
+                Length = (long)val.Size,
+                LastWriteTime = val.DateModified.DateTime,
+                LastWriteTimeUTC = val.DateModified.UtcDateTime,
+                CreationTime = _wrappedFile.DateCreated.DateTime,
+                CreationTimeUTC = _wrappedFile.DateCreated.UtcDateTime,
+                LastAccessTime = DateTime.MinValue,
+                LastAccessTimeUTC = DateTime.MinValue
+            };
+        }
+
+        public Task SetCreationTime(DateTime creationTime, bool utc = false, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            throw new NotSupportedException();
+        }
+
+        public Task SetLastAccessTime(DateTime lastAccessTime, bool utc = false, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            throw new NotSupportedException();
+        }
+
+        public Task SetLastWriteTime(DateTime lastWriteTime, bool utc = false, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            throw new NotSupportedException();
         }
     }
 }
