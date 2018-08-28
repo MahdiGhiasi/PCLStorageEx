@@ -33,17 +33,8 @@ namespace PCLStorage
     /// <summary>
     /// Represents a file system folder
     /// </summary>
-    public interface IFolder
+    public interface IFolder : IStorageItem
     {
-        /// <summary>
-        /// The name of the folder
-        /// </summary>
-        string Name { get; }
-        /// <summary>
-        /// The "full path" of the folder, which should uniquely identify it within a given <see cref="IFileSystem"/>
-        /// </summary>
-        string Path { get; }
-
         /// <summary>
         /// Creates a file in this folder
         /// </summary>

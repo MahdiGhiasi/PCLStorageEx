@@ -26,17 +26,8 @@ namespace PCLStorage
     /// <summary>
     /// Represents a file
     /// </summary>
-    public interface IFile
+    public interface IFile : IStorageItem
     {
-       /// <summary>
-       /// The name of the file
-       /// </summary>
-        string Name { get; }
-        /// <summary>
-        /// The "full path" of the file, which should uniquely identify it within a given <see cref="IFileSystem"/>
-        /// </summary>
-        string Path { get; }
-
         /// <summary>
         /// Opens the file
         /// </summary>
