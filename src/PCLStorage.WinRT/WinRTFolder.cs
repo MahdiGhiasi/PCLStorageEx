@@ -223,7 +223,7 @@ namespace PCLStorage
             }
             else
             {
-                IStorageItem storageItem = result.Result;
+                Windows.Storage.IStorageItem storageItem = result.Result;
                 if (storageItem.IsOfType(StorageItemTypes.File))
                 {
                     return ExistenceCheckResult.FileExists;
