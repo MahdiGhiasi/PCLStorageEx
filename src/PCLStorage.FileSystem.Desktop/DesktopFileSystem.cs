@@ -53,6 +53,11 @@ namespace PCLStorage
         }
 
         /// <summary>
+        /// If true, will switch off main thread.
+        /// </summary>
+        public bool SwitchOffMainThread { get; set; } = true;
+
+        /// <summary>
         /// Gets a file, given its path.  Returns null if the file does not exist.
         /// </summary>
         /// <param name="path">The path to a file, as returned from the <see cref="IFile.Path"/> property.</param>
@@ -62,7 +67,8 @@ namespace PCLStorage
         {
             Requires.NotNullOrEmpty(path, "path");
 
-            await AwaitExtensions.SwitchOffMainThreadAsync(cancellationToken);
+            if (SwitchOffMainThread)
+                await AwaitExtensions.SwitchOffMainThreadAsync(cancellationToken);
 
             if (File.Exists(path))
             {
@@ -82,7 +88,9 @@ namespace PCLStorage
         {
             Requires.NotNullOrEmpty(path, "path");
 
-            await AwaitExtensions.SwitchOffMainThreadAsync(cancellationToken);
+            if (SwitchOffMainThread)
+                await AwaitExtensions.SwitchOffMainThreadAsync(cancellationToken);
+
             if (Directory.Exists(path))
             {
                 return new FileSystemFolder(path, true);
