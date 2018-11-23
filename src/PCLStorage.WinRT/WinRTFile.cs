@@ -46,7 +46,7 @@ namespace PCLStorage
         /// </summary>
         public string Path
         {
-            get { return System.IO.Path.GetDirectoryName(_wrappedFile.Path); }
+            get { return _wrappedFile.Path; }
         }
 
         /// <summary>
